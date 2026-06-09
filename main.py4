@@ -1,0 +1,107 @@
+Web VPython 3.2
+
+scene.background = color.white
+scene.width = 800
+scene.height = 600
+
+head = sphere(pos=vector(0, 0, 0), radius=2,
+              color=color.white)
+
+left_ear = ellipsoid(
+    pos=vector(-1.2, 2.2, 0),
+    length=0.8,
+    height=2.5,
+    width=0.8,
+    color=color.white
+)
+
+right_ear = ellipsoid(
+    pos=vector(1.2, 2.2, 0),
+    length=0.8,
+    height=2.5,
+    width=0.8,
+    color=color.white
+)
+
+
+left_eye = sphere(
+    pos=vector(-0.6, 0.4, 1.9),
+    radius=0.12,
+    color=color.black
+)
+
+right_eye = sphere(
+    pos=vector(0.6, 0.4, 1.9),
+    radius=0.12,
+    color=color.black
+)
+
+nose = sphere(
+    pos=vector(0, -0.1, 1.95),
+    radius=0.15,
+    color=color.black
+)
+
+mouth = curve(
+    color=color.black,
+    radius=0.03
+)
+
+for x in arange(-0.4, 0.41, 0.02):
+    y = -0.7 - 0.3*(x**2)
+    mouth.append(vector(x, y, 1.95))
+
+body = sphere(
+    pos=vector(0, -3, 0),
+    radius=1.7,
+    color=vector(1, 0.9, 0)
+)
+
+left_arm = cylinder(
+    pos=vector(-1.5, -2.5, 0),
+    axis=vector(-1, -0.5, 0),
+    radius=0.2,
+    color=vector(1, 0.9, 0)
+)
+
+
+left_leg = cylinder(
+    pos=vector(-0.5, -4.5, 0),
+    axis=vector(0, -1, 0),
+    radius=0.2,
+    color=vector(1, 0.9, 0)
+)
+
+right_leg = cylinder(
+    pos=vector(0.5, -4.5, 0),
+    axis=vector(0, -1, 0),
+    radius=0.2,
+    color=vector(1, 0.9, 0)
+)
+ 
+ 
+body = sphere(pos=vector(0, -3, 0),
+              radius=1.7,
+              color=vector(1, 0.9, 0))
+
+right_arm = cylinder(
+    pos=vector(1.5, -2.5, 0),
+    axis=vector(0.8, 1.0, 0),
+    radius=0.2,
+    color=vector(1, 0.9, 0)
+)
+
+t = 0
+
+while True:
+    rate(50)
+
+    angle = 0.5 * sin(4*t)
+
+    right_arm.axis = vector(
+        0.8*cos(angle) - 1.0*sin(angle),
+        0.8*sin(angle) + 1.0*cos(angle),
+        0
+    )
+
+    t += 0.05
